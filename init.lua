@@ -975,4 +975,8 @@ require('lazy').setup({
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
+-- Use jk for escape
 vim.keymap.set('i', 'jk', '<Esc>', { noremap = true, silent = true })
+
+-- Set linebreak to wrap at words instead of in middle of words
+vim.cmd 'set linebreak'
