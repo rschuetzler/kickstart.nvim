@@ -782,6 +782,14 @@ require('lazy').setup({
       luasnip.config.setup {}
 
       cmp.setup {
+        enabled = function()
+          -- Disable completion in markdown files
+          local buftype = vim.api.nvim_buf_get_option(0, 'buftype')
+          local filetype = vim.api.nvim_buf_get_option(0, 'filetype')
+          if filetype == 'markdown' then
+            return false
+          end
+        end,
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
